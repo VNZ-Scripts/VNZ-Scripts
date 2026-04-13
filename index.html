@@ -276,3 +276,82 @@
 
 </body>
 </html>
+<!-- Botões no header -->
+<div class="btn-group">
+  <button class="btn btn-login" onclick="showForm('login')">Login</button>
+  <button class="btn btn-signup" onclick="showForm('signup')">Sign Up</button>
+</div>
+
+<!-- Formulário Login -->
+<div id="login-form" class="modal-form" style="display:none;">
+  <h2>Login</h2>
+  <form onsubmit="event.preventDefault(); alert('Login não implementado');">
+    <input type="email" placeholder="Email" required /><br />
+    <input type="password" placeholder="Senha" required /><br />
+    <button type="submit">Entrar</button>
+    <button type="button" onclick="hideForm()">Cancelar</button>
+  </form>
+</div>
+
+<!-- Formulário Sign Up -->
+<div id="signup-form" class="modal-form" style="display:none;">
+  <h2>Sign Up</h2>
+  <form onsubmit="event.preventDefault(); alert('Cadastro não implementado');">
+    <input type="text" placeholder="Nome de usuário" required /><br />
+    <input type="email" placeholder="Email" required /><br />
+    <input type="password" placeholder="Senha" required /><br />
+    <button type="submit">Criar Conta</button>
+    <button type="button" onclick="hideForm()">Cancelar</button>
+  </form>
+</div>
+
+<style>
+  .modal-form {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #08306b;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #3399ffaa;
+    color: white;
+    z-index: 1000;
+    width: 300px;
+  }
+  .modal-form input {
+    width: 100%;
+    padding: 8px 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: none;
+  }
+  .modal-form button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .modal-form button[type="submit"] {
+    background-color: #3399ff;
+    color: white;
+    font-weight: 700;
+  }
+  .modal-form button[type="button"] {
+    background-color: #555;
+    color: white;
+    margin-left: 10px;
+  }
+</style>
+
+<script>
+  function showForm(form) {
+    document.getElementById('login-form').style.display = form === 'login' ? 'block' : 'none';
+    document.getElementById('signup-form').style.display = form === 'signup' ? 'block' : 'none';
+  }
+  function hideForm() {
+    document.getElementById('login-form').style.display = 'none';
+    document.getElementById('signup-form').style.display = 'none';
+  }
+</script>
