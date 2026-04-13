@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>VNZ Scripts</title>
 <style>
-  /* Reset básico */
   * {
     margin: 0;
     padding: 0;
@@ -14,23 +13,14 @@
 
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0a1e3f;
+    background-color: #050f20; /* Azul bem escuro */
     color: #cce6ff;
     line-height: 1.6;
   }
 
-  a {
-    color: #66b2ff;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-
-  /* Menu topo */
   header {
-    background-color: #08306b;
-    padding: 15px 40px;
+    background-color: #030a17;
+    padding: 20px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -42,94 +32,27 @@
     color: #66b2ff;
   }
 
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-  }
-
-  nav ul li {
-    font-weight: 600;
-  }
-
-  nav ul li a {
-    padding: 8px 14px;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-  }
-
-  nav ul li a:hover,
-  nav ul li a.active {
-    background-color: #3399ff;
-    color: white;
-  }
-
-  /* Botões Login e Sign Up */
-  .btn-group {
-    display: flex;
-    gap: 12px;
-  }
-
-  .btn {
-    padding: 8px 18px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color 0.3s ease;
-    font-size: 0.9rem;
-  }
-
-  .btn-login {
-    background-color: transparent;
-    color: #66b2ff;
-    border: 2px solid #66b2ff;
-  }
-
-  .btn-login:hover {
-    background-color: #66b2ff;
-    color: #0a1e3f;
-  }
-
-  .btn-signup {
-    background-color: #66b2ff;
-    color: #0a1e3f;
-  }
-
-  .btn-signup:hover {
-    background-color: #3399ff;
-  }
-
-  /* Conteúdo principal */
   main {
-    max-width: 900px;
-    margin: 50px auto;
+    max-width: 800px;
+    margin: 80px auto;
     padding: 0 25px;
     text-align: center;
   }
 
-  /* Título principal */
   main h1 {
     font-size: 3rem;
     color: #3399ff;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     font-weight: 900;
   }
 
-  main p.subtitle {
-    font-size: 1.3rem;
-    margin-bottom: 40px;
-    color: #a3c9ff;
-  }
-
-  /* Barra de busca */
   .search-bar {
     display: flex;
     max-width: 600px;
-    margin: 0 auto 50px auto;
+    margin: 0 auto;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 0 15px #3399ff88;
+    box-shadow: 0 0 15px #3399ff44;
   }
 
   .search-bar input[type="text"] {
@@ -137,11 +60,12 @@
     padding: 14px 20px;
     border: none;
     font-size: 1.1rem;
-    color: #0a1e3f;
+    background-color: #081a36;
+    color: white;
   }
 
   .search-bar input[type="text"]::placeholder {
-    color: #7da9d9;
+    color: #5577aa;
   }
 
   .search-bar button {
@@ -152,73 +76,13 @@
     padding: 0 25px;
     cursor: pointer;
     font-size: 1.1rem;
-    transition: background-color 0.3s ease;
   }
 
-  .search-bar button:hover {
-    background-color: #66b2ff;
-  }
-
-  /* Seções de recursos */
-  .features {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .feature {
-    background-color: #08306b;
-    flex: 1 1 280px;
-    padding: 25px 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 20px #3399ff55;
-    text-align: left;
-    color: #cce6ff;
-  }
-
-  .feature h3 {
-    color: #66b2ff;
-    margin-bottom: 12px;
-    font-weight: 700;
-  }
-
-  .feature p {
-    font-size: 1rem;
-    line-height: 1.4;
-  }
-
-  /* Ícones simples com SVG */
-  .feature svg {
-    width: 40px;
-    height: 40px;
-    fill: #66b2ff;
-    margin-bottom: 15px;
-  }
-
-  /* Rodapé */
   footer {
-    margin-top: 70px;
-    padding: 20px 0;
+    margin-top: 100px;
     text-align: center;
-    color: #5599dd;
+    color: #335588;
     font-size: 0.9rem;
-  }
-
-  /* Responsividade */
-  @media (max-width: 768px) {
-    nav ul {
-      gap: 15px;
-    }
-
-    .features {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .feature {
-      min-width: 90%;
-    }
   }
 </style>
 </head>
@@ -226,132 +90,21 @@
 
 <header>
   <div class="logo">VNZ Scripts</div>
-  <nav>
-    <ul>
-      <li><a href="#" class="active">Home</a></li>
-      <li><a href="#">Upload</a></li>
-      <li><a href="#">Trending</a></li>
-      <li><a href="#">Rules</a></li>
-      <li><a href="#">Executors</a></li>
-      <li><a href="#">Docs</a></li>
-    </ul>
-  </nav>
-  <div class="btn-group">
-    <button class="btn btn-login">Login</button>
-    <button class="btn btn-signup">Sign Up</button>
-  </div>
 </header>
 
 <main>
   <h1>VNZ Scripts</h1>
-  <p class="subtitle">Search the best Lua scripts available in the community uploaded by users!</p>
+  <p>Encontre os melhores scripts Lua para a comunidade.</p>
 
-  <form class="search-bar" onsubmit="event.preventDefault(); alert('Search function not implemented yet');">
-    <input type="text" placeholder='Try "jailbreak"' />
+  <form class="search-bar" onsubmit="event.preventDefault();">
+    <input type="text" placeholder="Search" />
     <button type="submit">Search</button>
   </form>
-
-  <section class="features">
-    <div class="feature">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM12 14c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-      <h3>Active community</h3>
-      <p>Join hundreds of thousands of people already sharing their content!</p>
-    </div>
-    <div class="feature">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5c-1.1 0-2 .9-2 2v14l7-3 7 3V5c0-1.1-.9-2-2-2z"/></svg>
-      <h3>Extensive collection</h3>
-      <p>With tens of scripts uploaded every day and tens of thousands total scripts, the variety is almost endless!</p>
-    </div>
-    <div class="feature">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l4 4-4 4-4-4 4-4zm0 14v6h-2v-6h2z"/></svg>
-      <h3>Bring your spin to the platform</h3>
-      <p>Have something to share? Join the ever-growing community, upload, and make your presence known!</p>
-    </div>
-  </section>
 </main>
 
 <footer>
-  &copy; 2026 VNZ Scripts - Todos os direitos reservados
+  &copy; 2026 VNZ Scripts
 </footer>
 
 </body>
 </html>
-<!-- Botões no header -->
-<div class="btn-group">
-  <button class="btn btn-login" onclick="showForm('login')">Login</button>
-  <button class="btn btn-signup" onclick="showForm('signup')">Sign Up</button>
-</div>
-
-<!-- Formulário Login -->
-<div id="login-form" class="modal-form" style="display:none;">
-  <h2>Login</h2>
-  <form onsubmit="event.preventDefault(); alert('Login não implementado');">
-    <input type="email" placeholder="Email" required /><br />
-    <input type="password" placeholder="Senha" required /><br />
-    <button type="submit">Entrar</button>
-    <button type="button" onclick="hideForm()">Cancelar</button>
-  </form>
-</div>
-
-<!-- Formulário Sign Up -->
-<div id="signup-form" class="modal-form" style="display:none;">
-  <h2>Sign Up</h2>
-  <form onsubmit="event.preventDefault(); alert('Cadastro não implementado');">
-    <input type="text" placeholder="Nome de usuário" required /><br />
-    <input type="email" placeholder="Email" required /><br />
-    <input type="password" placeholder="Senha" required /><br />
-    <button type="submit">Criar Conta</button>
-    <button type="button" onclick="hideForm()">Cancelar</button>
-  </form>
-</div>
-
-<style>
-  .modal-form {
-    position: fixed;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #08306b;
-    padding: 20px 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px #3399ffaa;
-    color: white;
-    z-index: 1000;
-    width: 300px;
-  }
-  .modal-form input {
-    width: 100%;
-    padding: 8px 10px;
-    margin: 8px 0;
-    border-radius: 6px;
-    border: none;
-  }
-  .modal-form button {
-    margin-top: 10px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-  }
-  .modal-form button[type="submit"] {
-    background-color: #3399ff;
-    color: white;
-    font-weight: 700;
-  }
-  .modal-form button[type="button"] {
-    background-color: #555;
-    color: white;
-    margin-left: 10px;
-  }
-</style>
-
-<script>
-  function showForm(form) {
-    document.getElementById('login-form').style.display = form === 'login' ? 'block' : 'none';
-    document.getElementById('signup-form').style.display = form === 'signup' ? 'block' : 'none';
-  }
-  function hideForm() {
-    document.getElementById('login-form').style.display = 'none';
-    document.getElementById('signup-form').style.display = 'none';
-  }
-</script>
