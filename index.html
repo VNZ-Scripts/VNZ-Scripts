@@ -14,13 +14,13 @@
 
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #12121e;
-    color: #ddd;
+    background-color: #0a1e3f;
+    color: #cce6ff;
     line-height: 1.6;
   }
 
   a {
-    color: #a78bfa;
+    color: #66b2ff;
     text-decoration: none;
   }
   a:hover {
@@ -29,8 +29,8 @@
 
   /* Menu topo */
   header {
-    background-color: #1e1e2f;
-    padding: 15px 30px;
+    background-color: #08306b;
+    padding: 15px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -38,22 +38,14 @@
 
   .logo {
     font-weight: bold;
-    font-size: 1.5rem;
-    color: #a78bfa;
-    display: flex;
-    align-items: center;
-  }
-
-  .logo svg {
-    width: 32px;
-    height: 32px;
-    margin-right: 8px;
+    font-size: 1.8rem;
+    color: #66b2ff;
   }
 
   nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 25px;
   }
 
   nav ul li {
@@ -61,178 +53,171 @@
   }
 
   nav ul li a {
-    padding: 6px 12px;
+    padding: 8px 14px;
     border-radius: 6px;
     transition: background-color 0.3s ease;
   }
 
   nav ul li a:hover,
   nav ul li a.active {
-    background-color: #7c3aed;
+    background-color: #3399ff;
     color: white;
   }
 
   /* Botões Login e Sign Up */
   .btn-group {
     display: flex;
-    gap: 10px;
+    gap: 12px;
   }
 
   .btn {
-    padding: 8px 16px;
+    padding: 8px 18px;
     border-radius: 6px;
     border: none;
     cursor: pointer;
     font-weight: 600;
     transition: background-color 0.3s ease;
+    font-size: 0.9rem;
   }
 
   .btn-login {
     background-color: transparent;
-    color: #a78bfa;
-    border: 2px solid #a78bfa;
+    color: #66b2ff;
+    border: 2px solid #66b2ff;
   }
 
   .btn-login:hover {
-    background-color: #a78bfa;
-    color: #12121e;
+    background-color: #66b2ff;
+    color: #0a1e3f;
   }
 
   .btn-signup {
-    background-color: #a78bfa;
-    color: #12121e;
+    background-color: #66b2ff;
+    color: #0a1e3f;
   }
 
   .btn-signup:hover {
-    background-color: #7c3aed;
+    background-color: #3399ff;
   }
 
   /* Conteúdo principal */
   main {
-    max-width: 960px;
-    margin: 40px auto;
-    padding: 0 20px;
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 25px;
+    text-align: center;
   }
 
-  /* Título principal com animação suave */
-  @keyframes colorFade {
-    0%, 100% {
-      color: #a78bfa;
-      text-shadow: 0 0 10px #a78bfa;
-    }
-    50% {
-      color: #7c3aed;
-      text-shadow: 0 0 20px #7c3aed;
-    }
-  }
-
+  /* Título principal */
   main h1 {
-    font-size: 2.5rem;
-    color: #a78bfa;
-    margin-bottom: 10px;
-    animation: colorFade 8s ease-in-out infinite;
+    font-size: 3rem;
+    color: #3399ff;
+    margin-bottom: 15px;
+    font-weight: 900;
   }
 
   main p.subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    color: #ccc;
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    color: #a3c9ff;
   }
 
   /* Barra de busca */
   .search-bar {
     display: flex;
     max-width: 600px;
-    margin-bottom: 40px;
+    margin: 0 auto 50px auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 15px #3399ff88;
   }
 
   .search-bar input[type="text"] {
     flex: 1;
-    padding: 12px 16px;
-    border: 2px solid #7c3aed;
-    border-right: none;
-    border-radius: 6px 0 0 6px;
-    background-color: #1e1e2f;
-    color: #ddd;
-    font-size: 1rem;
+    padding: 14px 20px;
+    border: none;
+    font-size: 1.1rem;
+    color: #0a1e3f;
   }
 
   .search-bar input[type="text"]::placeholder {
-    color: #aaa;
+    color: #7da9d9;
   }
 
   .search-bar button {
-    padding: 12px 24px;
-    background-color: #7c3aed;
-    border: 2px solid #7c3aed;
-    border-radius: 0 6px 6px 0;
+    background-color: #3399ff;
+    border: none;
     color: white;
     font-weight: 700;
+    padding: 0 25px;
     cursor: pointer;
+    font-size: 1.1rem;
     transition: background-color 0.3s ease;
   }
 
   .search-bar button:hover {
-    background-color: #a78bfa;
-    border-color: #a78bfa;
+    background-color: #66b2ff;
   }
 
   /* Seções de recursos */
   .features {
     display: flex;
-    gap: 20px;
+    gap: 30px;
+    justify-content: center;
     flex-wrap: wrap;
-    justify-content: space-between;
   }
 
   .feature {
-    background-color: #1e1e2f;
-    flex: 1 1 30%;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px #7c3aed33;
-    min-width: 250px;
+    background-color: #08306b;
+    flex: 1 1 280px;
+    padding: 25px 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #3399ff55;
+    text-align: left;
+    color: #cce6ff;
   }
 
   .feature h3 {
-    color: #a78bfa;
-    margin-bottom: 10px;
+    color: #66b2ff;
+    margin-bottom: 12px;
+    font-weight: 700;
   }
 
   .feature p {
-    color: #ccc;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    line-height: 1.4;
   }
 
   /* Ícones simples com SVG */
   .feature svg {
-    width: 36px;
-    height: 36px;
-    fill: #a78bfa;
-    margin-bottom: 12px;
+    width: 40px;
+    height: 40px;
+    fill: #66b2ff;
+    margin-bottom: 15px;
   }
 
   /* Rodapé */
   footer {
-    margin-top: 60px;
+    margin-top: 70px;
     padding: 20px 0;
     text-align: center;
-    color: #666;
+    color: #5599dd;
     font-size: 0.9rem;
   }
 
   /* Responsividade */
   @media (max-width: 768px) {
     nav ul {
-      gap: 10px;
+      gap: 15px;
     }
 
     .features {
       flex-direction: column;
+      align-items: center;
     }
 
     .feature {
-      min-width: 100%;
+      min-width: 90%;
     }
   }
 </style>
@@ -240,10 +225,7 @@
 <body>
 
 <header>
-  <div class="logo">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 7v7c0 5 10 8 10 8s10-3 10-8V7l-10-5z"/></svg>
-    VNZ Scripts
-  </div>
+  <div class="logo">VNZ Scripts</div>
   <nav>
     <ul>
       <li><a href="#" class="active">Home</a></li>
@@ -261,7 +243,6 @@
 </header>
 
 <main>
-  <p>399 Registered users online<br>2730 Guests online</p>
   <h1>VNZ Scripts</h1>
   <p class="subtitle">Search the best Lua scripts available in the community uploaded by users!</p>
 
