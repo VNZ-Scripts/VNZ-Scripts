@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VNZ Scripts</title>
+<style>
+  body {
+    background-color: #121212;
+    margin: 0; padding: 0;
+    font-family: 'Arial Black', Arial, sans-serif;
+    color: #eee;
+  }
+  header {
+    background-color: #2c2c2c;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    user-select: none;
+  }
+  header h1 {
+    position: relative;
+    font-size: 4.5rem;
+    color: #fff;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    animation: flicker 3s infinite;
+    margin: 0;
+  }
+  /* Glow base */
+  header h1::before {
+    content: attr(data-text);
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    color: #00ffff;
+    z-index: -1;
+    filter: blur(8px);
+    opacity: 0.7;
+  }
+  /* Lightning flicker animation */
+  @keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      text-shadow:
+        0 0 5px #00ffff,
+        0 0 10px #00ffff,
+        0 0 20px #00ffff,
+        0 0 40px #0ff,
+        0 0 80px #0ff,
+        0 0 90px #0ff,
+        0 0 100px #0ff,
+        0 0 150px #0ff;
+      color: #00ffff;
+    }
+    20%, 22%, 24%, 55% {
+      text-shadow: none;
+      color: #004040;
+    }
+  }
+  /* Lightning bolt shapes */
+  header h1 span {
+    position: relative;
+    display: inline-block;
+  }
+  header h1 span::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    width: 4px;
+    height: 120%;
+    background: linear-gradient(45deg, #00ffff, #004040);
+    filter: drop-shadow(0 0 6px #00ffff);
+    transform: rotate(20deg);
+    opacity: 0.6;
+    animation: boltFlash 3s infinite;
+  }
+  header h1 span:nth-child(2)::after {
+    left: 40%;
+    animation-delay: 0.5s;
+  }
+  header h1 span:nth-child(3)::after {
+    left: 60%;
+    animation-delay: 1s;
+  }
+  @keyframes boltFlash {
+    0%, 50%, 100% {
+      opacity: 0.6;
+      filter: drop-shadow(0 0 6px #00ffff);
+    }
+    25%, 75% {
+      opacity: 0;
+      filter: none;
+    }
+  }
+
+  main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  .script-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .script-item {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 0 8px rgba(100, 50, 200, 0.5);
+    transition: background-color 0.3s ease;
+  }
+  .script-item:hover {
+    background-color: #2a2a2a;
+  }
+  .script-title {
+    font-size: 1.3rem;
+    margin: 0 0 0.3rem 0;
+  }
+  .script-description {
+    font-size: 1rem;
+    color: #bbb;
+    margin: 0 0 0.5rem 0;
+  }
+  .script-link {
+    color: #a67cff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .script-link:hover {
+    text-decoration: underline;
+  }
+  footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <h1 aria-label="VNZ Scripts" data-text="VNZ Scripts">
+      <span>V</span><span>N</span><span>Z</span> Scripts
+    </h1>
+  </header>
+  <main>
+    <ul class="script-list" id="scriptList">
+      <!-- Aqui você adicionará seus scripts -->
+      <!-- Exemplo:
+      <li class="script-item">
+        <h2 class="script-title">Nome do Script</h2>
+        <p class="script-description">Descrição breve do script.</p>
+        <a href="link_do_script.lua" class="script-link" target="_blank" rel="noopener">Ver / Baixar</a>
+      </li>
+      -->
+    </ul>
+  </main>
+  <footer>© 2026 VNZ Scripts - Todos os direitos reservados</footer>
+</body>
+</html>
