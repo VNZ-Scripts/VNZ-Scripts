@@ -13,59 +13,62 @@
 
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #050f20; /* Azul bem escuro */
-    color: #cce6ff;
+    background-color: #020b1a; /* Azul bem escuro */
+    color: #a0c4ff;
     line-height: 1.6;
   }
 
   header {
-    background-color: #030a17;
+    background-color: #011029;
     padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    text-align: center;
   }
 
   .logo {
-    font-weight: bold;
-    font-size: 1.8rem;
-    color: #66b2ff;
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #3399ff;
   }
 
   main {
-    max-width: 800px;
+    max-width: 700px;
     margin: 80px auto;
-    padding: 0 25px;
+    padding: 0 20px;
     text-align: center;
   }
 
   main h1 {
-    font-size: 3rem;
-    color: #3399ff;
+    font-size: 3.5rem;
+    color: #4da6ff;
     margin-bottom: 20px;
-    font-weight: 900;
+  }
+
+  main p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    color: #7fbfff;
   }
 
   .search-bar {
     display: flex;
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 0 15px #3399ff44;
+    box-shadow: 0 0 20px #3399ff55;
   }
 
   .search-bar input[type="text"] {
     flex: 1;
-    padding: 14px 20px;
+    padding: 15px 20px;
     border: none;
-    font-size: 1.1rem;
-    background-color: #081a36;
+    font-size: 1.2rem;
+    background-color: #02254d;
     color: white;
   }
 
   .search-bar input[type="text"]::placeholder {
-    color: #5577aa;
+    color: #7aaaff;
   }
 
   .search-bar button {
@@ -73,15 +76,20 @@
     border: none;
     color: white;
     font-weight: 700;
-    padding: 0 25px;
+    padding: 0 30px;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .search-bar button:hover {
+    background-color: #66b2ff;
   }
 
   footer {
     margin-top: 100px;
     text-align: center;
-    color: #335588;
+    color: #2a5d9f;
     font-size: 0.9rem;
   }
 </style>
@@ -94,7 +102,7 @@
 
 <main>
   <h1>VNZ Scripts</h1>
-  <p>Encontre os melhores scripts Lua para a comunidade.</p>
+  <p>Search the best Lua scripts available in the community uploaded by users!</p>
 
   <form class="search-bar" onsubmit="event.preventDefault();">
     <input type="text" placeholder="Search" />
