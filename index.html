@@ -27,7 +27,6 @@
     justify-content: space-between;
     gap: 20px;
     flex-wrap: wrap;
-    border-bottom: 1px solid #444400; /* linha sutil amarela escura */
   }
 
   /* Nome do site oculto (sem texto) para você alterar depois */
@@ -175,22 +174,45 @@
   }
 
   /* Responsividade */
+  @media (max-width: 900px) {
+    main {
+      max-width: 100%;
+      padding: 0 10px;
+    }
+  }
+
   @media (max-width: 600px) {
     header {
       justify-content: center;
       gap: 10px;
+      padding: 15px 20px;
     }
     nav {
       order: 2;
       width: 100%;
     }
-    .search-bar {
-      order: 1;
-      max-width: 100%;
-    }
     .tabs {
       justify-content: center;
       flex-wrap: wrap;
+    }
+    .search-bar {
+      order: 1;
+      max-width: 100%;
+      margin-bottom: 10px;
+    }
+    .ads-list {
+      gap: 10px;
+      padding-bottom: 15px;
+    }
+    .ad-item {
+      min-width: 150px;
+      padding: 10px;
+    }
+    .ad-item h3 {
+      font-size: 1rem;
+    }
+    .ad-item p {
+      font-size: 0.85rem;
     }
   }
 </style>
