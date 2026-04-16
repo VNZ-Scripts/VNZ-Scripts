@@ -3,224 +3,266 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Anúncio - TyF Blox</title>
+<title>TyF Blox</title>
 <style>
+  /* Reset básico */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
   body {
-    background-color: #000;
-    color: #fff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 20px;
+    background-color: #000000; /* Fundo preto */
+    color: #f0f0f0; /* Branco suave para texto */
+    line-height: 1.6;
   }
-  .container {
-    max-width: 700px;
-    margin: auto;
-    background-color: #111100;
-    border-radius: 12px;
-    padding: 20px;
+
+  header {
+    background-color: #000000; /* Fundo preto */
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
   }
-  img {
-    width: 100%;
-    border-radius: 12px;
-    margin-bottom: 15px;
+
+  /* Nome do site oculto (sem texto) para você alterar depois */
+  .logo {
+    font-weight: 900;
+    font-size: 1.8rem;
+    color: transparent; /* invisível */
+    user-select: none;
+    flex-shrink: 0;
   }
-  h1 {
-    color: #ffeb3b;
-    margin-bottom: 10px;
+
+  /* Menu em abas */
+  nav {
+    flex-grow: 1;
   }
-  /* Abas */
+
   .tabs {
     display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
+    gap: 15px;
+    list-style: none;
   }
-  .tab {
-    padding: 10px 15px;
-    background-color: #333300;
-    border-radius: 8px;
+
+  .tabs li {
     cursor: pointer;
-    font-weight: 700;
-    color: #f0f0f0;
-  }
-  .tab.active {
-    background-color: #ffeb3b;
-    color: #000;
-  }
-  .tab-content {
-    display: none;
-    background-color: #222200;
+    padding: 8px 16px;
     border-radius: 8px;
-    padding: 15px;
+    background-color: #333300; /* amarelo escuro suave */
+    color: #f0f0f0; /* branco suave */
+    font-weight: 600;
+    transition: background-color 0.3s ease;
   }
-  .tab-content.active {
-    display: block;
+
+  .tabs li:hover,
+  .tabs li.active {
+    background-color: #ffeb3b; /* amarelo claro confortável */
+    color: #000000; /* texto preto para contraste */
   }
-  /* Produtos */
-  .product-list {
-    margin-bottom: 15px;
+
+  /* Barra de busca no topo */
+  .search-bar {
+    display: flex;
+    max-width: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px #ffeb3baa; /* sombra amarela suave */
+    flex-shrink: 0;
   }
-  /* Perguntas */
-  .questions-list {
-    max-height: 200px;
-    overflow-y: auto;
-    margin-bottom: 15px;
-  }
-  .question-item {
-    border-bottom: 1px solid #444400;
-    padding: 8px 0;
-  }
-  .answer {
-    color: #aaffaa;
-    margin-left: 15px;
-  }
-  form textarea {
-    width: 100%;
-    height: 60px;
-    border-radius: 8px;
-    border: 1px solid #444400;
-    background-color: #111100;
-    color: #fff;
-    padding: 8px;
-    resize: none;
-  }
-  form button {
-    margin-top: 8px;
-    background-color: #ffeb3b;
+
+  .search-bar input[type="text"] {
+    flex: 1;
+    padding: 10px 15px;
     border: none;
-    padding: 10px 15px;
+    font-size: 1rem;
+    background-color: #111100; /* amarelo muito escuro para fundo */
+    color: #f0f0f0; /* branco suave */
+  }
+
+  .search-bar input[type="text"]::placeholder {
+    color: #bdb76b; /* amarelo escuro */
+  }
+
+  .search-bar button {
+    background-color: #ffeb3b; /* amarelo claro */
+    border: none;
+    color: #000000; /* texto preto */
     font-weight: 700;
+    padding: 0 15px;
     cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .search-bar button:hover {
+    background-color: #fdd835; /* amarelo um pouco mais escuro */
+  }
+
+  main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  /* Espaço para anúncios */
+  .ads-container {
+    background-color: #111100; /* amarelo muito escuro */
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 20px #ffeb3baa;
+  }
+
+  .ads-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffeb3b; /* amarelo claro */
+    margin-bottom: 20px;
+  }
+
+  .ads-list {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+
+  .ad-item {
+    min-width: 200px;
+    background-color: #333300; /* amarelo escuro suave */
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ffeb3baa;
+    padding: 15px;
+    color: #f0f0f0; /* branco suave */
+    flex-shrink: 0;
+  }
+
+  .ad-item img {
+    width: 100%;
     border-radius: 8px;
+    margin-bottom: 10px;
+    object-fit: cover;
+    height: 140px;
+  }
+
+  .ad-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+
+  .ad-item p {
+    font-size: 0.9rem;
+    color: #dcdcdc; /* cinza claro para texto */
+  }
+
+  /* Scrollbar para anúncios */
+  .ads-list::-webkit-scrollbar {
+    height: 8px;
+  }
+  .ads-list::-webkit-scrollbar-thumb {
+    background-color: #ffeb3baa;
+    border-radius: 4px;
+  }
+
+  footer {
+    margin-top: 100px;
+    text-align: center;
+    color: #bdb76b; /* amarelo escuro */
+    font-size: 0.9rem;
+  }
+
+  /* Responsividade */
+  @media (max-width: 900px) {
+    main {
+      max-width: 100%;
+      padding: 0 10px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    header {
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 20px;
+    }
+    nav {
+      order: 2;
+      width: 100%;
+    }
+    .tabs {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .search-bar {
+      order: 1;
+      max-width: 100%;
+      margin-bottom: 10px;
+    }
+    .ads-list {
+      gap: 10px;
+      padding-bottom: 15px;
+    }
+    .ad-item {
+      min-width: 150px;
+      padding: 10px;
+    }
+    .ad-item h3 {
+      font-size: 1rem;
+    }
+    .ad-item p {
+      font-size: 0.85rem;
+    }
   }
 </style>
 </head>
 <body>
 
-<div class="container">
-  <img id="adImage" src="" alt="Imagem do anúncio" />
-  <h1 id="adTitle">Título do Anúncio</h1>
+<header>
+  <div class="logo">TyF Blox</div>
+  <nav>
+    <ul class="tabs">
+      <li class="active">Home</li>
+      <li>Accounts</li>
+      <li>Pricing</li>
+      <li>Contact</li>
+    </ul>
+  </nav>
+  <form class="search-bar" onsubmit="event.preventDefault();">
+    <input type="text" placeholder="Search" />
+    <button type="submit">Search</button>
+  </form>
+</header>
 
-  <div class="tabs">
-    <div class="tab active" data-tab="products">Produtos</div>
-    <div class="tab" data-tab="description">Descrição</div>
-    <div class="tab" data-tab="questions">Perguntas</div>
-  </div>
+<main>
 
-  <div id="products" class="tab-content active">
-    <div class="product-list" id="productList">
-      <p>Nenhum produto listado.</p>
+  <section class="ads-container">
+    <h2 class="ads-title">Roblox Game Ads</h2>
+    <div class="ads-list">
+      <!-- Primeiro anúncio com imagem do Tio Patinhas via link externo -->
+      <div class="ad-item">
+        <img src="https://cdn.iset.io/assets/59429/produtos/1433/image47.jpg" alt="Tio Patinhas" />
+        <h3>Game Title 1</h3>
+        <p>Short description of the game or promotion.</p>
+      </div>
+      <!-- Segundo anúncio exemplo -->
+      <div class="ad-item">
+        <img src="https://tr.rbxcdn.com/abcdef1234567890abcdef1234567890/420/420/Image/Png" alt="Game 2" />
+        <h3>Game Title 2</h3>
+        <p>Short description of the game or promotion.</p>
+      </div>
+      <!-- Adicione mais anúncios aqui -->
     </div>
-  </div>
+  </section>
 
-  <div id="description" class="tab-content">
-    <p id="adDescription">Descrição do produto não disponível.</p>
-  </div>
+</main>
 
-  <div id="questions" class="tab-content">
-    <div class="questions-list" id="questionsList">
-      <p>Nenhuma pergunta ainda.</p>
-    </div>
-    <form id="questionForm">
-      <textarea id="questionInput" placeholder="Faça sua pergunta aqui..." required></textarea>
-      <button type="submit">Enviar Pergunta</button>
-    </form>
-  </div>
-</div>
-
-<script>
-  // Dados simulados para exemplo
-  const adsData = {
-    "1": {
-      title: "Game Title 1",
-      img: "https://cdn.iset.io/assets/59429/produtos/1433/image47.jpg",
-      description: "Descrição do produto não disponível.",
-      products: []
-    },
-    "2": {
-      title: "Game Title 2",
-      img: "https://tr.rbxcdn.com/abcdef1234567890abcdef1234567890/420/420/Image/Png",
-      description: "Descrição do produto não disponível.",
-      products: []
-    }
-  };
-
-  let questions = [];
-
-  function loadAd() {
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get('id');
-    if (!id || !adsData[id]) {
-      alert('Anúncio não encontrado.');
-      return;
-    }
-    const ad = adsData[id];
-    document.getElementById('adTitle').textContent = ad.title;
-    document.getElementById('adImage').src = ad.img;
-    document.getElementById('adDescription').textContent = ad.description;
-
-    const productList = document.getElementById('productList');
-    productList.innerHTML = '';
-    if (ad.products.length === 0) {
-      productList.innerHTML = '<p>Nenhum produto listado.</p>';
-    } else {
-      ad.products.forEach(prod => {
-        const p = document.createElement('p');
-        p.textContent = `${prod.name} - R$ ${prod.price}`;
-        productList.appendChild(p);
-      });
-    }
-  }
-
-  // Gerenciar abas
-  const tabs = document.querySelectorAll('.tab');
-  const contents = document.querySelectorAll('.tab-content');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      contents.forEach(c => c.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById(tab.dataset.tab).classList.add('active');
-    });
-  });
-
-  // Perguntas
-  const questionForm = document.getElementById('questionForm');
-  const questionsList = document.getElementById('questionsList');
-  const questionInput = document.getElementById('questionInput');
-
-  function renderQuestions() {
-    questionsList.innerHTML = '';
-    if (questions.length === 0) {
-      questionsList.innerHTML = '<p>Nenhuma pergunta ainda.</p>';
-      return;
-    }
-    questions.forEach(q => {
-      const div = document.createElement('div');
-      div.className = 'question-item';
-      div.innerHTML = `<strong>Pergunta:</strong> ${q.question}`;
-      if (q.answer) {
-        const ans = document.createElement('div');
-        ans.className = 'answer';
-        ans.innerHTML = `<strong>Resposta:</strong> ${q.answer}`;
-        div.appendChild(ans);
-      }
-      questionsList.appendChild(div);
-    });
-  }
-
-  questionForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const questionText = questionInput.value.trim();
-    if (!questionText) return;
-    questions.push({ question: questionText, answer: null });
-    questionInput.value = '';
-    renderQuestions();
-    alert('Pergunta enviada! Aguarde a resposta.');
-  });
-
-  loadAd();
-  renderQuestions();
-</script>
+<footer>
+  &copy; 2026 TyF Blox
+</footer>
 
 </body>
 </html>
