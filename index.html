@@ -27,34 +27,38 @@
     color: #ffeb3b;
     margin-bottom: 10px;
   }
-  button.toggle-products {
-    background-color: #ffeb3b;
-    border: none;
-    padding: 10px 15px;
-    font-weight: 700;
-    cursor: pointer;
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
-  .product-list {
-    display: none;
-    background-color: #222200;
-    border-radius: 8px;
-    padding: 10px;
+  /* Abas */
+  .tabs {
+    display: flex;
+    gap: 10px;
     margin-bottom: 15px;
   }
-  .description {
-    margin-bottom: 20px;
+  .tab {
+    padding: 10px 15px;
+    background-color: #333300;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    color: #f0f0f0;
   }
-  .questions-section {
+  .tab.active {
+    background-color: #ffeb3b;
+    color: #000;
+  }
+  .tab-content {
+    display: none;
     background-color: #222200;
     border-radius: 8px;
     padding: 15px;
   }
-  .questions-section h2 {
-    color: #ffeb3b;
-    margin-bottom: 10px;
+  .tab-content.active {
+    display: block;
   }
+  /* Produtos */
+  .product-list {
+    margin-bottom: 15px;
+  }
+  /* Perguntas */
   .questions-list {
     max-height: 200px;
     overflow-y: auto;
@@ -95,21 +99,25 @@
   <img id="adImage" src="" alt="Imagem do anúncio" />
   <h1 id="adTitle">Título do Anúncio</h1>
 
-  <button class="toggle-products" id="toggleProductsBtn">▼ Produtos</button>
-  <div class="product-list" id="productList">
-    <!-- Lista de produtos vazia por enquanto -->
-    <p>Nenhum produto listado.</p>
+  <div class="tabs">
+    <div class="tab active" data-tab="products">Produtos</div>
+    <div class="tab" data-tab="description">Descrição</div>
+    <div class="tab" data-tab="questions">Perguntas</div>
   </div>
 
-  <div class="description" id="adDescription">
-    <!-- Descrição do produto -->
-    <p>Descrição do produto não disponível.</p>
+  <div id="products" class="tab-content active">
+    <div class="product-list" id="productList">
+      <p>Nenhum produto listado.</p>
+    </div>
   </div>
 
-  <div class="questions-section">
-    <h2>Perguntas sobre este produto</h2>
+  <div id="description" class="tab-content">
+    <p id="adDescription">Descrição do produto não disponível.</p>
+  </div>
+
+  <div id="questions" class="tab-content">
     <div class="questions-list" id="questionsList">
-      <!-- Perguntas e respostas aparecerão aqui -->
+      <p>Nenhuma pergunta ainda.</p>
     </div>
     <form id="questionForm">
       <textarea id="questionInput" placeholder="Faça sua pergunta aqui..." required></textarea>
@@ -119,13 +127,13 @@
 </div>
 
 <script>
-  // Simulação de dados para exemplo
+  // Dados simulados para exemplo
   const adsData = {
     "1": {
       title: "Game Title 1",
       img: "https://cdn.iset.io/assets/59429/produtos/1433/image47.jpg",
       description: "Descrição do produto não disponível.",
-      products: [] // lista vazia por enquanto
+      products: []
     },
     "2": {
       title: "Game Title 2",
@@ -135,10 +143,8 @@
     }
   };
 
-  // Perguntas armazenadas localmente (exemplo)
   let questions = [];
 
-  // Função para carregar anúncio baseado no id da URL
   function loadAd() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('id');
@@ -149,9 +155,8 @@
     const ad = adsData[id];
     document.getElementById('adTitle').textContent = ad.title;
     document.getElementById('adImage').src = ad.img;
-    document.getElementById('adDescription').innerHTML = `<p>${ad.description}</p>`;
+    document.getElementById('adDescription').textContent = ad.description;
 
-    // Produtos (vazio por enquanto)
     const productList = document.getElementById('productList');
     productList.innerHTML = '';
     if (ad.products.length === 0) {
@@ -165,20 +170,20 @@
     }
   }
 
-  // Toggle produtos
-  const toggleBtn = document.getElementById('toggleProductsBtn');
-  const productListDiv = document.getElementById('productList');
-  toggleBtn.addEventListener('click', () => {
-    if (productListDiv.style.display === 'block') {
-      productListDiv.style.display = 'none';
-      toggleBtn.textContent = '▼ Produtos';
-    } else {
-      productListDiv.style.display = 'block';
-      toggleBtn.textContent = '▲ Produtos';
-    }
+  // Gerenciar abas
+  const tabs = document.querySelectorAll('.tab');
+  const contents = document.querySelectorAll('.tab-content');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.tab).classList.add('active');
+    });
   });
 
-  // Gerenciar perguntas
+  // Perguntas
   const questionForm = document.getElementById('questionForm');
   const questionsList = document.getElementById('questionsList');
   const questionInput = document.getElementById('questionInput');
@@ -189,7 +194,7 @@
       questionsList.innerHTML = '<p>Nenhuma pergunta ainda.</p>';
       return;
     }
-    questions.forEach((q, i) => {
+    questions.forEach(q => {
       const div = document.createElement('div');
       div.className = 'question-item';
       div.innerHTML = `<strong>Pergunta:</strong> ${q.question}`;
@@ -207,19 +212,14 @@
     e.preventDefault();
     const questionText = questionInput.value.trim();
     if (!questionText) return;
-    // Adiciona pergunta sem resposta
     questions.push({ question: questionText, answer: null });
     questionInput.value = '';
     renderQuestions();
     alert('Pergunta enviada! Aguarde a resposta.');
   });
 
-  // Inicializa
   loadAd();
   renderQuestions();
-
-  // Nota: Para controle de respostas só por você, é necessário backend e autenticação,
-  // aqui só temos front-end para envio e exibição de perguntas.
 </script>
 
 </body>
