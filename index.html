@@ -15,7 +15,7 @@
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #000000; /* Fundo preto */
-    color: #ffffff; /* Letras brancas padrão */
+    color: #f0f0f0; /* Branco suave para texto */
     line-height: 1.6;
   }
 
@@ -27,6 +27,7 @@
     justify-content: space-between;
     gap: 20px;
     flex-wrap: wrap;
+    border-bottom: 1px solid #444400; /* linha sutil amarela escura */
   }
 
   /* Nome do site oculto (sem texto) para você alterar depois */
@@ -53,22 +54,16 @@
     cursor: pointer;
     padding: 8px 16px;
     border-radius: 8px;
-    background-color: #333300; /* amarelo escuro */
-    color: #ffffff; /* letras brancas */
+    background-color: #333300; /* amarelo escuro suave */
+    color: #f0f0f0; /* branco suave */
     font-weight: 600;
     transition: background-color 0.3s ease;
-    text-shadow:
-      -1px -1px 0 #ffff00,
-      1px -1px 0 #ffff00,
-      -1px 1px 0 #ffff00,
-      1px 1px 0 #ffff00;
   }
 
   .tabs li:hover,
   .tabs li.active {
-    background-color: #ffff00; /* amarelo vibrante */
-    color: #000000; /* texto preto */
-    text-shadow: none;
+    background-color: #ffeb3b; /* amarelo claro confortável */
+    color: #000000; /* texto preto para contraste */
   }
 
   /* Barra de busca no topo */
@@ -77,7 +72,7 @@
     max-width: 300px;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 0 10px #ffff00aa;
+    box-shadow: 0 0 10px #ffeb3baa; /* sombra amarela suave */
     flex-shrink: 0;
   }
 
@@ -86,22 +81,16 @@
     padding: 10px 15px;
     border: none;
     font-size: 1rem;
-    background-color: #000000; /* fundo preto */
-    color: #ffffff; /* letras brancas */
-    text-shadow:
-      -1px -1px 0 #ffff00,
-      1px -1px 0 #ffff00,
-      -1px 1px 0 #ffff00,
-      1px 1px 0 #ffff00;
+    background-color: #111100; /* amarelo muito escuro para fundo */
+    color: #f0f0f0; /* branco suave */
   }
 
   .search-bar input[type="text"]::placeholder {
     color: #bdb76b; /* amarelo escuro */
-    text-shadow: none;
   }
 
   .search-bar button {
-    background-color: #ffff00; /* amarelo vibrante */
+    background-color: #ffeb3b; /* amarelo claro */
     border: none;
     color: #000000; /* texto preto */
     font-weight: 700;
@@ -112,7 +101,7 @@
   }
 
   .search-bar button:hover {
-    background-color: #e6e600; /* amarelo mais escuro */
+    background-color: #fdd835; /* amarelo um pouco mais escuro */
   }
 
   main {
@@ -123,22 +112,17 @@
 
   /* Espaço para anúncios */
   .ads-container {
-    background-color: #000000; /* fundo preto */
+    background-color: #111100; /* amarelo muito escuro */
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 0 20px #ffff00aa;
+    box-shadow: 0 0 20px #ffeb3baa;
   }
 
   .ads-title {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #ffff00; /* amarelo vibrante */
+    color: #ffeb3b; /* amarelo claro */
     margin-bottom: 20px;
-    text-shadow:
-      -1px -1px 0 #ffffff,
-      1px -1px 0 #ffffff,
-      -1px 1px 0 #ffffff,
-      1px 1px 0 #ffffff;
   }
 
   .ads-list {
@@ -150,11 +134,11 @@
 
   .ad-item {
     min-width: 200px;
-    background-color: #333300; /* amarelo escuro */
+    background-color: #333300; /* amarelo escuro suave */
     border-radius: 10px;
-    box-shadow: 0 0 10px #ffff00aa;
+    box-shadow: 0 0 10px #ffeb3baa;
     padding: 15px;
-    color: #000000; /* texto preto */
+    color: #f0f0f0; /* branco suave */
     flex-shrink: 0;
   }
 
@@ -167,17 +151,11 @@
   .ad-item h3 {
     font-size: 1.1rem;
     margin-bottom: 6px;
-    color: #ffffff; /* letras brancas */
-    text-shadow:
-      -1px -1px 0 #ffff00,
-      1px -1px 0 #ffff00,
-      -1px 1px 0 #ffff00,
-      1px 1px 0 #ffff00;
   }
 
   .ad-item p {
     font-size: 0.9rem;
-    color: #333300; /* amarelo escuro */
+    color: #dcdcdc; /* cinza claro para texto */
   }
 
   /* Scrollbar para anúncios */
@@ -185,7 +163,7 @@
     height: 8px;
   }
   .ads-list::-webkit-scrollbar-thumb {
-    background-color: #ffff00aa;
+    background-color: #ffeb3baa;
     border-radius: 4px;
   }
 
