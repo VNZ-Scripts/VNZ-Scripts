@@ -15,7 +15,7 @@
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #000000; /* Fundo preto */
-    color: #f0e68c; /* Cor clara para texto */
+    color: #ffffff; /* Letras brancas padrão */
     line-height: 1.6;
   }
 
@@ -54,15 +54,21 @@
     padding: 8px 16px;
     border-radius: 8px;
     background-color: #333300; /* amarelo escuro */
-    color: #f0e68c; /* amarelo claro */
+    color: #ffffff; /* letras brancas */
     font-weight: 600;
     transition: background-color 0.3s ease;
+    text-shadow:
+      -1px -1px 0 #ffff00,
+      1px -1px 0 #ffff00,
+      -1px 1px 0 #ffff00,
+      1px 1px 0 #ffff00;
   }
 
   .tabs li:hover,
   .tabs li.active {
     background-color: #ffff00; /* amarelo vibrante */
     color: #000000; /* texto preto */
+    text-shadow: none;
   }
 
   /* Barra de busca no topo */
@@ -81,11 +87,17 @@
     border: none;
     font-size: 1rem;
     background-color: #000000; /* fundo preto */
-    color: #f0e68c; /* amarelo claro */
+    color: #ffffff; /* letras brancas */
+    text-shadow:
+      -1px -1px 0 #ffff00,
+      1px -1px 0 #ffff00,
+      -1px 1px 0 #ffff00,
+      1px 1px 0 #ffff00;
   }
 
   .search-bar input[type="text"]::placeholder {
     color: #bdb76b; /* amarelo escuro */
+    text-shadow: none;
   }
 
   .search-bar button {
@@ -122,6 +134,11 @@
     font-weight: 700;
     color: #ffff00; /* amarelo vibrante */
     margin-bottom: 20px;
+    text-shadow:
+      -1px -1px 0 #ffffff,
+      1px -1px 0 #ffffff,
+      -1px 1px 0 #ffffff,
+      1px 1px 0 #ffffff;
   }
 
   .ads-list {
@@ -150,6 +167,12 @@
   .ad-item h3 {
     font-size: 1.1rem;
     margin-bottom: 6px;
+    color: #ffffff; /* letras brancas */
+    text-shadow:
+      -1px -1px 0 #ffff00,
+      1px -1px 0 #ffff00,
+      -1px 1px 0 #ffff00,
+      1px 1px 0 #ffff00;
   }
 
   .ad-item p {
