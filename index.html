@@ -14,13 +14,13 @@
 
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #020b1a; /* Azul bem escuro */
-    color: #a0c4ff;
+    background-color: #000000; /* Fundo preto */
+    color: #f0e68c; /* Cor clara para texto */
     line-height: 1.6;
   }
 
   header {
-    background-color: #011029;
+    background-color: #000000; /* Fundo preto */
     padding: 15px 40px;
     display: flex;
     align-items: center;
@@ -53,16 +53,16 @@
     cursor: pointer;
     padding: 8px 16px;
     border-radius: 8px;
-    background-color: #02254d;
-    color: #a0c4ff;
+    background-color: #333300; /* amarelo escuro */
+    color: #f0e68c; /* amarelo claro */
     font-weight: 600;
     transition: background-color 0.3s ease;
   }
 
   .tabs li:hover,
   .tabs li.active {
-    background-color: #3399ff;
-    color: white;
+    background-color: #ffff00; /* amarelo vibrante */
+    color: #000000; /* texto preto */
   }
 
   /* Barra de busca no topo */
@@ -71,7 +71,7 @@
     max-width: 300px;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 0 20px #3399ff55;
+    box-shadow: 0 0 10px #ffff00aa;
     flex-shrink: 0;
   }
 
@@ -80,18 +80,18 @@
     padding: 10px 15px;
     border: none;
     font-size: 1rem;
-    background-color: #02254d;
-    color: white;
+    background-color: #000000; /* fundo preto */
+    color: #f0e68c; /* amarelo claro */
   }
 
   .search-bar input[type="text"]::placeholder {
-    color: #7aaaff;
+    color: #bdb76b; /* amarelo escuro */
   }
 
   .search-bar button {
-    background-color: #3399ff;
+    background-color: #ffff00; /* amarelo vibrante */
     border: none;
-    color: white;
+    color: #000000; /* texto preto */
     font-weight: 700;
     padding: 0 15px;
     cursor: pointer;
@@ -100,7 +100,7 @@
   }
 
   .search-bar button:hover {
-    background-color: #66b2ff;
+    background-color: #e6e600; /* amarelo mais escuro */
   }
 
   main {
@@ -111,16 +111,16 @@
 
   /* Espaço para anúncios */
   .ads-container {
-    background-color: #011029;
+    background-color: #000000; /* fundo preto */
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 0 0 20px #3399ff55;
+    box-shadow: 0 0 20px #ffff00aa;
   }
 
   .ads-title {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #66b2ff;
+    color: #ffff00; /* amarelo vibrante */
     margin-bottom: 20px;
   }
 
@@ -133,11 +133,11 @@
 
   .ad-item {
     min-width: 200px;
-    background-color: #02254d;
+    background-color: #333300; /* amarelo escuro */
     border-radius: 10px;
-    box-shadow: 0 0 10px #3399ff88;
+    box-shadow: 0 0 10px #ffff00aa;
     padding: 15px;
-    color: white;
+    color: #000000; /* texto preto */
     flex-shrink: 0;
   }
 
@@ -154,7 +154,7 @@
 
   .ad-item p {
     font-size: 0.9rem;
-    color: #a0c4ff;
+    color: #333300; /* amarelo escuro */
   }
 
   /* Scrollbar para anúncios */
@@ -162,14 +162,14 @@
     height: 8px;
   }
   .ads-list::-webkit-scrollbar-thumb {
-    background-color: #3399ff88;
+    background-color: #ffff00aa;
     border-radius: 4px;
   }
 
   footer {
     margin-top: 100px;
     text-align: center;
-    color: #2a5d9f;
+    color: #bdb76b; /* amarelo escuro */
     font-size: 0.9rem;
   }
 
