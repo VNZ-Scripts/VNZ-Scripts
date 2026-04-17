@@ -129,35 +129,41 @@
   }
 
   .ad-item {
-    min-width: 200px;
+    min-width: 300px; /* aumentei de 200px para 300px */
     background-color: #330000;
     border-radius: 10px;
     box-shadow: 0 0 10px #ff0000aa;
-    padding: 15px;
+    padding: 25px; /* aumentei o padding para dar mais espaço */
     color: #f0f0f0;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
+    transform: scale(1.1); /* aumenta a escala em 10% */
+    transition: transform 0.3s ease;
+  }
+
+  .ad-item:hover {
+    transform: scale(1.15); /* aumenta um pouco mais ao passar o mouse */
   }
 
   .ad-item img {
     width: 100%;
     border-radius: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     object-fit: cover;
-    height: 140px;
+    height: 180px; /* aumentei a altura da imagem */
   }
 
   .ad-item h3 {
-    font-size: 1.1rem;
-    margin-bottom: 6px;
+    font-size: 1.3rem; /* aumentei o tamanho da fonte */
+    margin-bottom: 10px;
   }
 
   .ad-item p {
-    font-size: 0.9rem;
+    font-size: 1rem; /* aumentei o tamanho da fonte */
     color: #dcdcdc;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
     text-align: center;
   }
 
@@ -165,12 +171,13 @@
     background-color: #ff0000;
     color: #000000;
     border: none;
-    padding: 8px 16px;
+    padding: 12px 20px; /* aumentei o padding */
     border-radius: 8px;
     font-weight: 700;
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: 100%;
+    font-size: 1.1rem; /* aumentei o tamanho da fonte */
   }
 
   .buy-btn:hover {
@@ -433,14 +440,14 @@
       padding-bottom: 15px;
     }
     .ad-item {
-      min-width: 150px;
-      padding: 10px;
+      min-width: 250px;
+      padding: 20px;
     }
     .ad-item h3 {
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
     .ad-item p {
-      font-size: 0.85rem;
+      font-size: 0.95rem;
     }
     #profileIcon {
       left: 10px;
