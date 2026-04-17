@@ -126,25 +126,27 @@
     gap: 20px;
     overflow-x: auto;
     padding-bottom: 10px;
+    flex-wrap: wrap; /* permite quebra de linha para os novos anúncios */
   }
 
   .ad-item {
-    min-width: 300px; /* aumentei de 200px para 300px */
+    min-width: 300px;
     background-color: #330000;
     border-radius: 10px;
     box-shadow: 0 0 10px #ff0000aa;
-    padding: 25px; /* aumentei o padding para dar mais espaço */
+    padding: 25px;
     color: #f0f0f0;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    transform: scale(1.1); /* aumenta a escala em 10% */
+    transform: scale(1.1);
     transition: transform 0.3s ease;
+    margin-bottom: 20px; /* espaço entre linhas */
   }
 
   .ad-item:hover {
-    transform: scale(1.15); /* aumenta um pouco mais ao passar o mouse */
+    transform: scale(1.15);
   }
 
   .ad-item img {
@@ -152,16 +154,16 @@
     border-radius: 8px;
     margin-bottom: 15px;
     object-fit: cover;
-    height: 180px; /* aumentei a altura da imagem */
+    height: 180px;
   }
 
   .ad-item h3 {
-    font-size: 1.3rem; /* aumentei o tamanho da fonte */
+    font-size: 1.3rem;
     margin-bottom: 10px;
   }
 
   .ad-item p {
-    font-size: 1rem; /* aumentei o tamanho da fonte */
+    font-size: 1rem;
     color: #dcdcdc;
     margin-bottom: 15px;
     text-align: center;
@@ -171,13 +173,13 @@
     background-color: #ff0000;
     color: #000000;
     border: none;
-    padding: 12px 20px; /* aumentei o padding */
+    padding: 12px 20px;
     border-radius: 8px;
     font-weight: 700;
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: 100%;
-    font-size: 1.1rem; /* aumentei o tamanho da fonte */
+    font-size: 1.1rem;
   }
 
   .buy-btn:hover {
@@ -186,7 +188,7 @@
 
   /* Modal */
   .modal {
-    display: none; /* hidden by default */
+    display: none;
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -222,11 +224,11 @@
 
   .modal-content p {
     margin-bottom: 15px;
-    min-height: 40px; /* espaço para descrição vazia */
+    min-height: 40px;
   }
 
   .product-list {
-    min-height: 60px; /* espaço para lista vazia */
+    min-height: 60px;
     border: 1px solid #ff0000;
     border-radius: 8px;
     padding: 10px;
@@ -438,16 +440,17 @@
     .ads-list {
       gap: 10px;
       padding-bottom: 15px;
+      flex-wrap: wrap;
     }
     .ad-item {
-      min-width: 250px;
-      padding: 20px;
+      min-width: 300px;
+      padding: 25px;
     }
     .ad-item h3 {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
     .ad-item p {
-      font-size: 0.95rem;
+      font-size: 1rem;
     }
     #profileIcon {
       left: 10px;
@@ -482,18 +485,79 @@
     <div class="ads-container">
       <h2 class="ads-title">Roblox Game Ads</h2>
       <div class="ads-list">
-        <!-- Primeiro anúncio com botão comprar -->
+        <!-- Anúncios existentes -->
         <div class="ad-item" data-title="Game Title 1" data-desc="" data-img="https://cdn.iset.io/assets/59429/produtos/1433/image47.jpg">
           <img src="https://cdn.iset.io/assets/59429/produtos/1433/image47.jpg" alt="Tio Patinhas" />
           <h3>Game Title 1</h3>
           <p>Short description of the game or promotion.</p>
           <button class="buy-btn">Comprar</button>
         </div>
-        <!-- Segundo anúncio exemplo -->
         <div class="ad-item" data-title="Game Title 2" data-desc="" data-img="https://tr.rbxcdn.com/abcdef1234567890abcdef1234567890/420/420/Image/Png">
           <img src="https://tr.rbxcdn.com/abcdef1234567890abcdef1234567890/420/420/Image/Png" alt="Game 2" />
           <h3>Game Title 2</h3>
           <p>Short description of the game or promotion.</p>
+          <button class="buy-btn">Comprar</button>
+        </div>
+
+        <!-- Novos 10 anúncios adicionados -->
+        <div class="ad-item" data-title="Game Title 3" data-desc="Descrição do jogo 3." data-img="https://via.placeholder.com/300x180?text=Game+3">
+          <img src="https://via.placeholder.com/300x180?text=Game+3" alt="Game 3" />
+          <h3>Game Title 3</h3>
+          <p>Descrição do jogo 3.</p>
+          <button class="buy-btn">Comprar</button>
+        </div>
+        <div class="ad-item" data-title="Game Title 4" data-desc="Descrição do jogo 4." data-img="https://via.placeholder.com/300x180?text=Game+4">
+          <img src="https://via.placeholder.com/300x180?text=Game+4" alt="Game 4" />
+          <h3>Game Title 4</h3>
+          <p>Descrição do jogo 4.</p>
+          <button class="buy-btn">Comprar</button>
+        </div>
+        <div class="ad-item" data-title="Game Title 5" data-desc="Descrição do jogo 5." data-img="https://via.placeholder.com/300x180?text=Game+5">
+          <img src="https://via.placeholder.com/300x180?text=Game+5" alt="Game 5" />
+          <h3>Game Title 5</h3>
+          <p>Descrição do jogo 5.</p>
+          <button class="buy-btn">Comprar</button>
+        </div>
+        <div class="ad-item" data-title="Game Title 6" data-desc="Descrição do jogo 6." data-img="https://via.placeholder.com/300x180?text=Game+6">
+          <img src="https://via.placeholder.com/300x180?text=Game+6" alt="Game 6" />
+          <h3>Game Title 6</h3>
+          <p>Descrição do jogo 6.</p>
+          <button class="buy-btn">Comprar</button>
+        </div>
+        <div class="ad-item" data-title="Game Title 7" data-desc="Descrição do jogo 7." data-img="https://via.placeholder.com/300x180?text=Game+7">
+          <img src="https://via.placeholder.com/300x180?text=Game+7" alt="Game 7" />
+          <h3>Game Title 7</h3>
+          <p>Descrição do jogo 7.</p>
+          <button class="buy-btn">Comprar</button>
+        </div>
+        <div class="ad-item" data-title="Game Title 8" data-desc="Descrição do jogo 8." data-img="https://via.placeholder.com/300x180?text=Game+8">
+          <img src="https://via.placeholder.com/300x180?text=Game+8" alt="Game 8" />
+          <h3>Game Title 8</h3>
+          <p>Descrição do jogo 8.</p>
+          <button class="buy-btn">Comprar</button>
+        </div>
+        <div class="ad-item" data-title="Game Title 9" data-desc="Descrição do jogo 9." data-img="https://via.placeholder.com/300x180?text=Game+9">
+          <img src="https://via.placeholder.com/300x180?text=Game+9" alt="Game 9" />
+          <h3>Game Title 9</h3>
+          <p>Descrição do jogo 9.</p>
+          <button class="buy-btn">Comprar</button>
+        </div>
+        <div class="ad-item" data-title="Game Title 10" data-desc="Descrição do jogo 10." data-img="https://via.placeholder.com/300x180?text=Game+10">
+          <img src="https://via.placeholder.com/300x180?text=Game+10" alt="Game 10" />
+          <h3>Game Title 10</h3>
+          <p>Descrição do jogo 10.</p>
+          <button class="buy-btn">Comprar</button>
+        </div>
+        <div class="ad-item" data-title="Game Title 11" data-desc="Descrição do jogo 11." data-img="https://via.placeholder.com/300x180?text=Game+11">
+          <img src="https://via.placeholder.com/300x180?text=Game+11" alt="Game 11" />
+          <h3>Game Title 11</h3>
+          <p>Descrição do jogo 11.</p>
+          <button class="buy-btn">Comprar</button>
+        </div>
+        <div class="ad-item" data-title="Game Title 12" data-desc="Descrição do jogo 12." data-img="https://via.placeholder.com/300x180?text=Game+12">
+          <img src="https://via.placeholder.com/300x180?text=Game+12" alt="Game 12" />
+          <h3>Game Title 12</h3>
+          <p>Descrição do jogo 12.</p>
           <button class="buy-btn">Comprar</button>
         </div>
       </div>
