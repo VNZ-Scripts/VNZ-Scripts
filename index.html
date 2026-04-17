@@ -448,6 +448,38 @@
       transform: none;
     }
   }
+
+  /* Estilo para verificação de email */
+  #emailVerification {
+    background-color: #111100;
+    border: 1px solid #ffeb3b;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
+    color: #f0f0f0;
+  }
+  #emailVerification input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 8px;
+    border-radius: 6px;
+    border: 1px solid #ffeb3b;
+    background-color: #111100;
+    color: #f0f0f0;
+  }
+  #emailVerification button {
+    margin-top: 10px;
+    background-color: #ffeb3b;
+    border: none;
+    color: #000;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  #emailVerification button:hover {
+    background-color: #fdd835;
+  }
 </style>
 </head>
 <body>
@@ -525,6 +557,15 @@
         <p id="registerMessage" class="message"></p>
       </form>
 
+      <!-- Verificação de Email -->
+      <div id="emailVerification" style="display:none;">
+        <p>Um código de verificação foi enviado para seu email (simulado): <strong id="simulatedCode"></strong></p>
+        <label for="verificationCodeInput">Digite o código de verificação:</label>
+        <input type="text" id="verificationCodeInput" />
+        <button id="verifyCodeBtn">Verificar Código</button>
+        <p id="verificationMessage" class="message"></p>
+      </div>
+
       <!-- Perfil do Usuário -->
       <div id="profileView" style="display:none; color:#f0f0f0;">
         <h3>Bem-vindo, <span id="profileUsername"></span>!</h3>
@@ -586,12 +627,8 @@
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      // Remove active de todas as tabs
       tabs.forEach(t => t.classList.remove('active'));
-      // Esconde todos os conteúdos
       tabContents.forEach(tc => tc.style.display = 'none');
-
-      // Ativa a tab clicada
       tab.classList.add('active');
       const tabId = tab.getAttribute('data-tab');
       document.getElementById(tabId).style.display = 'block';
@@ -671,7 +708,7 @@
     }, 1000);
   });
 
-  // Contas - Login e Registro com perfil, sessão e ícone no header
+  // Contas - Login, Registro com verificação de email
   const showLoginBtn = document.getElementById('showLogin');
   const showRegisterBtn = document.getElementById('showRegister');
   const showProfileBtn = document.getElementById('showProfile');
@@ -688,12 +725,21 @@
   const logoutBtn = document.getElementById('logoutBtn');
 
   const profileIcon = document.getElementById('profileIcon');
-  const accountsTabs = document.getElementById('accountsTabs');
+
+  const emailVerificationDiv = document.getElementById('emailVerification');
+  const simulatedCodeSpan = document.getElementById('simulatedCode');
+  const verificationCodeInput = document.getElementById('verificationCodeInput');
+  const verifyCodeBtn = document.getElementById('verifyCodeBtn');
+  const verificationMessage = document.getElementById('verificationMessage');
+
+  let currentVerificationCode = null;
+  let pendingUserData = null; // Guarda dados do usuário até verificação
 
   function showSection(section) {
     loginForm.style.display = 'none';
     registerForm.style.display = 'none';
     profileView.style.display = 'none';
+    emailVerificationDiv.style.display = 'none';
 
     showLoginBtn.classList.remove('active');
     showRegisterBtn.classList.remove('active');
@@ -711,6 +757,7 @@
     }
     loginMessage.textContent = '';
     registerMessage.textContent = '';
+    verificationMessage.textContent = '';
   }
 
   function getUsers() {
@@ -762,13 +809,11 @@
 
   function updateUIForLoggedIn(loggedIn) {
     if (loggedIn) {
-      // Mostrar só perfil e esconder login/registro
       showProfileBtn.style.display = 'inline-block';
       showLoginBtn.style.display = 'none';
       showRegisterBtn.style.display = 'none';
       profileIcon.style.display = 'flex';
     } else {
-      // Mostrar login/registro e esconder perfil
       showProfileBtn.style.display = 'none';
       showLoginBtn.style.display = 'inline-block';
       showRegisterBtn.style.display = 'inline-block';
@@ -787,19 +832,55 @@
     const email = document.getElementById('registerEmail').value.trim();
 
     if (!username || !password || !email) {
-      registerMessage.style.color = 'lightcoral';
-      registerMessage.textContent = 'Preencha todos os campos.';
+      registerMessage.style.color = 'red';
+      registerMessage.textContent = 'Por favor, preencha todos os campos.';
       return;
     }
 
-    if (createUser(username, password, email)) {
-      registerMessage.style.color = 'lightgreen';
-      registerMessage.textContent = 'Conta criada com sucesso! Faça login.';
-      registerForm.reset();
-      showSection('login');
+    const users = getUsers();
+    if (users[username]) {
+      registerMessage.style.color = 'red';
+      registerMessage.textContent = 'Usuário já existe.';
+      return;
+    }
+
+    // Gerar código de verificação (6 dígitos)
+    currentVerificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+
+    // Simular envio do código por email (mostrar na tela)
+    simulatedCodeSpan.textContent = currentVerificationCode;
+
+    // Guardar dados do usuário até verificação
+    pendingUserData = { username, password, email };
+
+    // Mostrar área de verificação e esconder formulário registro
+    registerForm.style.display = 'none';
+    emailVerificationDiv.style.display = 'block';
+    registerMessage.textContent = '';
+  });
+
+  verifyCodeBtn.addEventListener('click', () => {
+    const codeEntered = verificationCodeInput.value.trim();
+    if (codeEntered === currentVerificationCode) {
+      // Código correto, registrar usuário
+      if (pendingUserData) {
+        if (createUser(pendingUserData.username, pendingUserData.password, pendingUserData.email)) {
+          verificationMessage.style.color = 'green';
+          verificationMessage.textContent = 'Email verificado! Usuário registrado com sucesso. Faça login.';
+          pendingUserData = null;
+          currentVerificationCode = null;
+          verificationCodeInput.value = '';
+          emailVerificationDiv.style.display = 'none';
+          showSection('login');
+          registerForm.reset();
+        } else {
+          verificationMessage.style.color = 'red';
+          verificationMessage.textContent = 'Erro ao registrar usuário.';
+        }
+      }
     } else {
-      registerMessage.style.color = 'lightcoral';
-      registerMessage.textContent = 'Usuário já existe. Escolha outro nome.';
+      verificationMessage.style.color = 'red';
+      verificationMessage.textContent = 'Código incorreto. Tente novamente.';
     }
   });
 
@@ -808,16 +889,20 @@
     const username = document.getElementById('loginUsername').value.trim();
     const password = document.getElementById('loginPassword').value.trim();
 
+    if (!username || !password) {
+      loginMessage.style.color = 'red';
+      loginMessage.textContent = 'Por favor, preencha todos os campos.';
+      return;
+    }
+
     if (validateUser(username, password)) {
       setSession(username);
-      loginMessage.style.color = 'lightgreen';
-      loginMessage.textContent = `Bem-vindo, ${username}!`;
-      loginForm.reset();
       updateProfileView(username);
       updateUIForLoggedIn(true);
       showSection('profile');
+      loginForm.reset();
     } else {
-      loginMessage.style.color = 'lightcoral';
+      loginMessage.style.color = 'red';
       loginMessage.textContent = 'Usuário ou senha incorretos.';
     }
   });
@@ -828,19 +913,11 @@
     showSection('login');
   });
 
-  profileIcon.addEventListener('click', () => {
-    // Ao clicar no ícone, abre a aba Accounts na seção Perfil
-    tabs.forEach(t => t.classList.remove('active'));
-    tabContents.forEach(tc => tc.style.display = 'none');
-    document.querySelector('li[data-tab="accounts"]').classList.add('active');
-    document.getElementById('accounts').style.display = 'block';
-    showSection('profile');
-  });
-
+  // Ao carregar a página, verifica sessão
   window.addEventListener('load', () => {
-    const loggedUser = getSession();
-    if (loggedUser) {
-      updateProfileView(loggedUser);
+    const loggedInUser = getSession();
+    if (loggedInUser) {
+      updateProfileView(loggedInUser);
       updateUIForLoggedIn(true);
       showSection('profile');
     } else {
